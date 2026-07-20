@@ -5,11 +5,10 @@
 Recommended setup uses `uv`:
 
 ```bash
-uv venv .venv
-uv pip install --python .venv/bin/python -e ".[dev]"
+uv sync --extra dev
 ```
 
-If you prefer standard tooling:
+With standard tooling:
 
 ```bash
 python3 -m venv .venv
@@ -18,92 +17,47 @@ python -m pip install -U pip
 python -m pip install -e ".[dev]"
 ```
 
-## Local Verification
+## Verification
 
-Run the test suite before opening a change:
-
-```bash
-make test
-```
-
-Run static checks with:
-
-```bash
-make lint
-```
-
-Run tests with the coverage gate with:
-
-```bash
-make coverage
-```
-
-Run the public release smoke check with:
-
-```bash
-make smoke
-```
-
-If you touch the paper:
-
-```bash
-make paper
-```
-
-If you touch contract-validation matrix (CVM) artifacts, public docs, claim
-wording, or paper validation:
-
-```bash
-make cvm-check
-make paper-verify
-```
-
-For the full public verification path:
+Run the full public release path before opening a change:
 
 ```bash
 make verify
 ```
 
-Install pre-commit hooks if you want local Ruff checks before each commit:
+Focused targets are also available:
 
 ```bash
-pre-commit install
+make lint
+make test
+make conformance
+make coverage
+make smoke
+make build
 ```
 
-To remove generated local artifacts:
-
-```bash
-make clean
-```
+Install the pre-commit hook with `pre-commit install` when useful.
 
 ## Scope
 
-Keep this repo focused on the WOD2Sim contract-validation integration surface:
+Keep this branch focused on:
 
-- simulator adapters
-- launch/setup/readiness tooling
-- patched-upstream AlpaSim integration files
-- evidence, audit, and claim-valid release artifacts
-- public-facing tests, docs, and paper source
+- AlpaSim simulator and external-driver adapters;
+- launch, setup, readiness, batching, and reproduction tooling;
+- packaged upstream override files and their provenance;
+- run audits, summaries, support bundles, and bounded integration evidence;
+- public tests and operator documentation.
 
-Keep the public CLI surface aligned with the release README:
+Keep the public model presets aligned with the README:
 
-- `constant_velocity`
-- `route_following`
-- `token_dagger_bc`
-- `direct_actor_planner`
+- `constant_velocity`;
+- `route_following`;
+- `token_dagger_bc`;
+- `direct_actor_planner`.
 
-Avoid reintroducing unrelated research command surfaces unless they are required
-for the public contract-validation release itself.
-
-## Claim Boundary
-
-Do not report an integration failure as a policy failure. A behavior row becomes
-policy-attributable only after route, temporal, lifecycle, deployment, and
-evidence checks pass and the aggregate marks it claim-valid. If a change touches
-run summaries, paper text, plots, or README numbers, keep the integration failure
-versus policy failure distinction explicit.
+Do not add a dataset claim merely because a policy interface resembles WOMD.
+Actual WOMD execution and WOMD-to-AlpaSim scene conversion require separate
+implementations and validation.
 
 Do not commit restricted assets, private checkpoints, raw gated scene media,
-tokens, credentials, private host paths, or support bundles that contain them.
-Reference gated prerequisites by identifier or hash only.
+tokens, credentials, private host paths, or unredacted support bundles.

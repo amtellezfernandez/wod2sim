@@ -2,8 +2,8 @@
 
 ## Supported Versions
 
-Security fixes are handled on the `main` branch until the project starts publishing
-versioned release branches.
+Security fixes for the adapter release are handled on `main`. Fixes that also
+affect another maintained branch are applied there separately.
 
 ## Reporting a Vulnerability
 

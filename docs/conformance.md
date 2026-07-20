@@ -1,6 +1,6 @@
 # Conformance
 
-The core conformance tier is the dependency-light contract check for WOD2Sim.
+The core conformance tier is the dependency-light adapter check for WOD2Sim.
 It is intended for CI and for reviewers who do not have AlpaSim scene assets,
 Docker, a GPU, torch, or private checkpoints.
 
@@ -12,13 +12,13 @@ make conformance
 suite with learned-policy checkpoint tests skipped. This keeps the core tier
 stable across machines that may or may not have torch installed.
 
-## Contract Coverage
+## Coverage
 
-| Contract property | Evidence in the core tier |
+| Adapter property | Evidence in the core tier |
 | --- | --- |
 | Public model registry is curated | Entry-point and installed-doctor tests expose `constant_velocity`, `route_following`, `token_dagger_bc`, and `direct_actor_planner`; only the first two are dependency-light public-core models. |
 | Route geometry reaches policy code | Signal tests require `route_source=alpasim_waypoints` when route waypoints are present. |
-| Command-proxy fallback is not claim-valid | Audit, batch-summary, and benchmark-summary tests invalidate command-proxy route evidence. |
+| Command-proxy fallback is visible | Audit, batch-summary, and benchmark-summary tests retain route provenance. |
 | Scene signal is behavior-neutral by default | Signal tests keep brightness/dynamics risk diagnostic-only unless structured hazards are present. |
 | Trajectory output preserves adapter identity | Resampling identity, endpoint interpolation, and replay-identity tests cover the shared output contract. |
 | Launch state is materialized | Setup and launcher tests check command files, metadata, AlpaSim checkout provenance, and Docker-image inspection fields. |
@@ -28,12 +28,12 @@ stable across machines that may or may not have torch installed.
 
 The core tier is not a driving benchmark. It does not execute AlpaSim rollouts,
 does not validate a learned checkpoint, and does not prove collision, progress,
-or off-road metrics. Benchmark claims still require executed scenes, baselines,
-and failure analysis as described in [Evaluation](evaluation.md).
+or off-road performance. Those results require executed representative scenes,
+appropriate baselines, and failure analysis.
 
 Torch-dependent token-policy tests remain part of the normal test suite when
 torch is installed, but they are intentionally excluded from core conformance so
-CI can prove the integration contract without private model artifacts.
+CI can verify the public adapter without private model artifacts.
 Direct-actor proxies, learned checkpoints, and restricted scene assets are
 optional gated extensions for live evaluation, not prerequisites for the core
 conformance tier.

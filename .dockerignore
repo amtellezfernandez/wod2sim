@@ -8,13 +8,6 @@ __pycache__/
 
 workspace/
 runs/
-demo/
 dist/
 build/
 *.egg-info/
-
-artifacts/cvm/environment/
-artifacts/cvm/logs/
-artifacts/cvm/results/*/run_dirs/
-paper/cvm/main.pdf
-

@@ -19,16 +19,6 @@ wod2sim-reproduce \
 The plan is reviewable but reports `valid_claim_evidence: false` because no
 closed-loop execution occurred.
 
-For an ungated artifact walkthrough, run:
-
-```bash
-make demo
-```
-
-This writes a synthetic run directory with an audit, support bundle, aggregate
-JSON, and SVG visual. It does not execute AlpaSim and must not be reported as a
-policy metric.
-
 ## Execute
 
 ```bash
@@ -61,17 +51,11 @@ An executed run can produce:
 
 Raw scene assets, private checkpoints, and rollout media remain local.
 
-## Claim Boundary
+## Interpretation
 
-A dry command plan proves only that the release surface is installed. An
-integration claim requires an executed run with a successful audit. A policy
-performance claim additionally requires declared scenes, route-waypoint-backed
-driver logs, AlpaSim checkout and Docker image provenance, baselines, complete
-metrics, failure analysis, and a passing `wod2sim-benchmark-readiness` report.
-This repository currently publishes no policy benchmark result.
-
-If any route, sensor, temporal, lifecycle, deployment, or evidence gate fails,
-classify the row as an integration/precondition/evidence failure. Do not count
-that row as a policy failure, even if the rollout contains a collision,
-off-road event, timeout, or degraded progress metric. A policy failure requires
-both a claim-valid row and a retained policy-layer failure classification.
+A dry command plan proves only that the package and command surface are
+available. A completed integration run additionally needs the driver log,
+simulator result, expanded configuration, and audit to agree.
+Policy-performance reporting requires representative declared scenes,
+appropriate baselines, complete metrics, and failure analysis beyond this
+adapter release.

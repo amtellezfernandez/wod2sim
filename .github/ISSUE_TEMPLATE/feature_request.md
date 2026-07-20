@@ -8,11 +8,11 @@ labels: enhancement
 
 ## Proposed Behavior
 
-## Contract And Evidence Impact
+## Adapter And Evidence Impact
 
-- Which contract layer changes: semantic, temporal, lifecycle, deployment, or evidence?
-- How does this preserve the separation between integration failure and policy failure?
-- Does it change claim-valid evidence, public docs, or paper claims?
+- Which input, output, lifecycle, setup, or run-record behavior changes?
+- Does it require a checkpoint, dataset, scene asset, or simulator modification?
+- What test or retained run should verify it?
 
 ## Alternatives Considered
 

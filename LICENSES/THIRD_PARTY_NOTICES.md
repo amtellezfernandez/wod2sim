@@ -30,27 +30,26 @@ repository are described in
 AlpaSim itself is **not** bundled in this repository; the runtime expects a
 separate AlpaSim checkout as described in the README.
 
-## NVIDIA AlpaSim protocol-replay media
+## NVIDIA AlpaSim run media
 
-[`docs/assets/readme/alpasim-protocol-replay.mp4`](../docs/assets/readme/alpasim-protocol-replay.mp4)
+[`artifacts/external/alpasim_navsim_reactive_rollout/camera-map.mp4`](../artifacts/external/alpasim_navsim_reactive_rollout/camera-map.mp4)
 and its
-[`animated README preview`](../docs/assets/readme/alpasim-protocol-replay.gif)
-contain front-camera frames extracted from the official AlpaSim integration
-fixture `src/runtime/tests/data/integration/rollout.asl` at upstream commit
-`049f70fbfe8207e1efd4831a6c3e78a38703d473`. The exact source URL and SHA-256
-are recorded in
-[`artifacts/external/alpasim_protocol_replay/manifest.json`](../artifacts/external/alpasim_protocol_replay/manifest.json).
+[`animated README preview`](../docs/assets/readme/alpasim-closed-loop.gif)
+contain AlpaSim map output and a recorded camera frame from the official public
+AlpaSim fixture
+`src/runtime/tests/data/mock_video_model/clipgt-0b10bce8-61f1-4350-8577-cf3c9493ffc3.usdz`
+at upstream commit `9177bd0bec547d7516cc77d1864e943780ef7e7a`.
+The exact source URL and SHA-256 are recorded in the retained
+[`manifest`](../artifacts/external/alpasim_navsim_reactive_rollout/manifest.json).
 
 The upstream fixture is part of NVIDIA AlpaSim:
 
 > SPDX-License-Identifier: Apache-2.0
 > Copyright (c) 2025-2026 NVIDIA Corporation
 
-WOD2Sim modified the rendered media by selecting the wide-camera stream,
-pairing frames with executed `Drive` calls, and adding comparison plots,
-measurements, labels, and contract-audit results. The upstream portion is
-redistributed under the Apache License, Version 2.0; the full license text is
-included at [`Apache-2.0.txt`](Apache-2.0.txt).
+WOD2Sim derived the preview directly from AlpaSim's retained run video. The
+upstream portion is redistributed under the Apache License, Version 2.0; the
+full license text is included at [`Apache-2.0.txt`](Apache-2.0.txt).
 
 ## NAVSIM EgoStatusMLP reference implementation and checkpoint
 
@@ -67,38 +66,3 @@ The checkpoint is not redistributed in this repository.
 NAVSIM and its baseline checkpoint repository are published under the Apache
 License, Version 2.0. The full license text is included at
 [`Apache-2.0.txt`](Apache-2.0.txt).
-
-## Waymax contract-study software and results
-
-The experiment runner at
-[`src/wod2sim/experiments/waymax_contract_study.py`](../src/wod2sim/experiments/waymax_contract_study.py)
-and the retained outputs under
-[`artifacts/external/waymax_contract_study/`](../artifacts/external/waymax_contract_study)
-were made using a pinned Waymax checkout and its bundled WOMD route fixture.
-Waymax source and the fixture are not redistributed by WOD2Sim.
-
-The following notice is included as required by the upstream license:
-
-> This research publication, software, and output data was made using the
-> Waymax Licensed Materials, provided by Waymo LLC under the Waymax License
-> Agreement for Non-Commercial Use, available at
-> https://github.com/waymo-research/waymax/blob/main/LICENSE, and your access
-> and use of the Waymax Licensed Materials are governed by the terms and
-> conditions contained therein.
-
-The Waymax-derived study software and results are available only for
-Non-commercial Purposes and are governed by the Waymax License Agreement for
-Non-Commercial Use, including its conditions on Derivative IP. They are
-exceptions to the repository's general BSD-3-Clause license. The upstream
-commit and fixture SHA-256 are recorded in the retained manifest.
-
-## IEEE conference LaTeX class
-
-[`paper/cvm/ieeeconf.cls`](../paper/cvm/ieeeconf.cls) is the unmodified
-conference class distributed through the IEEE PaperPlaza support package linked
-by the target conference's author instructions. It is copyright 1993-2002 by Gerry Murray,
-Silvano Balemi, Jon Dixon, Peter Nuechter, Juergen von Hagen, and Michael Shell.
-
-The class is distributed under the Perl Artistic License. A full copy of that
-license is included at [`Artistic-1.0.txt`](Artistic-1.0.txt). The contribution,
-copyright, warranty, and license notices are retained in the class file.

@@ -2,24 +2,17 @@
 
 | Guide | Purpose |
 | --- | --- |
-| [Design](design.md) | Five-contract WOD2Sim integration boundary, architecture, and scope. |
-| [WOMD targeting](womd-targeting.md) | Policy-interface targeting, the bounded Waymax/WOMD contract study, broader native WOMD execution, and the absent WOMD-to-AlpaSim scene-conversion boundary. |
-| [Getting started](getting-started.md) | Installation, AlpaSim setup, and command materialization. |
-| [Reproduction](reproduction.md) | Executed-run workflow and evidence artifacts. |
-| [Evaluation](evaluation.md) | Metrics, baselines, and claim requirements. |
-| [Conformance](conformance.md) | Dependency-light core contract checks. |
-| [Demo](demo.md) | Ungated synthetic evidence demo and claim boundary. |
-| [AlpaSim E2E Challenge compatibility](challenge-compatibility.md) | External-driver compatibility path; not a benchmark claim. |
-| [CLI](cli.md) | Supported public commands. |
-| [Changelog](changelog.md) | Public release history. |
+| [Getting started](getting-started.md) | Install WOD2Sim, connect an AlpaSim checkout, and materialize a run. |
+| [Design](design.md) | External-driver architecture, policy presets, trajectory conversion, and validation. |
+| [WOMD targeting](womd-targeting.md) | Distinguish policy integration, native WOMD execution, and WOMD-to-AlpaSim scene conversion. |
+| [Reproduction](reproduction.md) | Plan or execute a run and retain its configuration and evidence. |
+| [Conformance](conformance.md) | Dependency-light checks for the adapter and public command surface. |
+| [AlpaSim E2E compatibility](challenge-compatibility.md) | Package and run the evaluator-owned external-driver path. |
+| [CLI](cli.md) | Public commands and development targets. |
+| [Changelog](changelog.md) | Adapter release history. |
 
-The canonical [paper PDF](../wod2sim.pdf), [paper source](../paper/cvm/),
-and [generated evidence package](../artifacts/cvm/) describe the contract-based
-integration boundary in detail. The contract-validation matrix (CVM) material is
-the WOD2Sim reproducibility package, not a separate project.
-For release traceability, see the generated-report surface under
-[`artifacts/cvm/reports`](../artifacts/cvm/reports/), especially the
-[`contract_test_audit.md`](../artifacts/cvm/reports/contract_test_audit.md)
-mapping from contract requirements to tests and explicit gaps, and
-[`release_decision.md`](../artifacts/cvm/reports/release_decision.md) for the
-current claim-ready versus not-claim-ready boundary.
+The repository does not install AlpaSim, redistribute gated scene assets, or
+ship learned-policy checkpoints. Start with the dependency-light
+`constant_velocity` or `route_following` preset, then connect a learned policy
+only after matching its required observations, coordinates, timing, and route
+inputs to the adapter.

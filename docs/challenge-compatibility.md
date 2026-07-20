@@ -6,9 +6,8 @@ benchmark claim.
 
 The official challenge submission unit is a Docker image that serves
 `egodriver.EgodriverService`. The evaluator owns the simulator stack, scenes,
-and leaderboard. WOD2Sim's useful role is narrower: reuse the route, sensor,
-temporal, lifecycle, deployment, and evidence contracts inside that driver
-boundary so a score is not interpreted before the integration path is valid.
+and leaderboard. WOD2Sim's role is narrower: reuse the route, sensor, timing,
+lifecycle, deployment, and run-record checks inside that driver boundary.
 
 ## Ported Code
 
@@ -23,7 +22,7 @@ It reuses:
 - `ConstantVelocityAlpaSimModel` and `RouteFollowingAlpaSimModel` as
   dependency-light challenge drivers.
 - `SensorFreshnessGuard`, trajectory validation, and resampling from the shared
-  WOD2Sim contract layer.
+  WOD2Sim adapter layer.
 - Route-waypoint preservation and command-only fallback diagnostics from the
   WOD2Sim signal layer.
 
@@ -37,7 +36,7 @@ wod2sim-challenge-driver --model route_following
 
 ## Intended Use
 
-Use this path to test whether WOD2Sim contracts survive a managed external
+Use this path to test whether the WOD2Sim adapter survives a managed external
 driver interface:
 
 - `Drive` latency and 10 Hz response behavior.
@@ -75,17 +74,16 @@ Start a local challenge-style driver container:
 bash integrations/alpasim_e2e_challenge/run_local_container.sh
 ```
 
-## Non-Claim
+## Executed Example
 
 Do not report this as a WOD2Sim benchmark result unless an actual challenge
 submission or local challenge conformance run has completed and the returned
 metrics are retained with provenance. Constant velocity and route following are
 integration baselines, not competitive autonomous-driving policies.
 
-The retained paper artifact includes one completed local external-evaluator
-conformance run with provenance in
-`artifacts/external/alpasim_e2e_challenge_conformance/`: 1/1 rollout completed,
+The retained evidence under
+`artifacts/external/alpasim_e2e_challenge_conformance/` records one completed
+local external-evaluator run: 1/1 rollout completed,
 197 driver RPCs were served, 396 image events were observed, and 197/197 driver
-calls met the latency target. This is interface-portability evidence only. The
-central result remains the separation between integration-invalid rows and
-policy-attributable behavior.
+calls met the configured latency target. This is interface compatibility for
+that pinned configuration, not a leaderboard or policy-quality result.

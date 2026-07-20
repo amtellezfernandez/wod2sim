@@ -411,7 +411,6 @@ def build_report(
             "docs_getting_started": None
             if repo_root is None
             else str(repo_root / "docs" / "getting-started.md"),
-            "paper_source": None if repo_root is None else str(repo_root / "paper"),
             "package_root": str(package_path()),
             "source_repo_root": None if SOURCE_REPO_ROOT is None else str(SOURCE_REPO_ROOT),
         },

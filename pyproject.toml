@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "wod2sim"
 version = "0.1.0"
-description = "Contract-validation framework that separates integration failures from policy failures in AlpaSim closed-loop driving simulation"
+description = "External-driver adapter and run tooling for trajectory policies in AlpaSim"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "BSD-3-Clause"
@@ -14,9 +14,9 @@ authors = [
     { name = "Alba Maria Tellez Fernandez" },
 ]
 keywords = [
+    "alpasim",
     "autonomous-driving",
     "closed-loop-simulation",
-    "contract-validation",
     "system-integration",
     "trajectory-policies",
 ]
@@ -76,14 +76,12 @@ wod2sim-batch-summary = "wod2sim.cli.commands.batch_summary:main"
 wod2sim-benchmark-readiness = "wod2sim.cli.commands.benchmark_readiness:main"
 wod2sim-evidence = "wod2sim.neutral.alpasim_metrics:main"
 wod2sim-challenge-driver = "wod2sim.challenge.e2e_driver:main"
-wod2sim-waymax-study = "wod2sim.experiments.waymax_contract_study:main"
 
 [project.urls]
 Homepage = "https://github.com/amtellezfernandez/WOD2Sim"
 Repository = "https://github.com/amtellezfernandez/WOD2Sim"
 Issues = "https://github.com/amtellezfernandez/WOD2Sim/issues"
 Documentation = "https://github.com/amtellezfernandez/WOD2Sim/tree/main/docs"
-Paper = "https://github.com/amtellezfernandez/WOD2Sim/blob/main/wod2sim.pdf"
 Citation = "https://github.com/amtellezfernandez/WOD2Sim/blob/main/CITATION.cff"
 
 [tool.setuptools]
@@ -103,7 +101,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [
-    "temporal: temporal contract tests selected by the CVM release gate",
+    "temporal: temporal adapter and trajectory-resampling tests",
 ]
 
 [tool.coverage.run]

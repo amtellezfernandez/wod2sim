@@ -1,6 +1,6 @@
 # Getting Started
 
-WOD2Sim is a contract-integration package for an existing AlpaSim checkout. It
+WOD2Sim is an external-driver adapter for an existing AlpaSim checkout. It
 does not install AlpaSim, download gated scenes, or ship policy checkpoints.
 
 ## Requirements
